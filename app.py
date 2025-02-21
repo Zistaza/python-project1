@@ -25,9 +25,9 @@ if page == "Home":
     
     # Ensure the image exists inside assets folder
     try:
-        st.image("assets/banner.png", use_container_width=True)  # Updated use_container_width
+        st.image("/banner.png", use_container_width=True)  # Updated use_container_width
     except:
-        st.warning("⚠️ Image not found in 'assets/' folder!")
+        st.warning("⚠️ Image not found in!")
 
     st.markdown("### Why Streamlit?")
     st.write("✅ Quick Development, 🛠️ Easy Deployment, 📊 Great for Data Apps")
