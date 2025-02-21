@@ -25,7 +25,7 @@ if page == "Home":
     
     # Ensure the image exists inside assets folder
     try:
-        st.image("assets/banner.png", use_column_width=True)
+        st.image("assets/banner.png", use_container_width=True)  # Updated use_container_width
     except:
         st.warning("⚠️ Image not found in 'assets/' folder!")
 
@@ -58,46 +58,4 @@ elif page == "Live Demo":
 elif page == "AI Chatbot":
     st.subheader("🤖 AI Chatbot")
     openai_key = st.text_input("Enter OpenAI API Key", type="password")
-    user_input = st.text_input("Ask me anything:")
-
-    if openai_key and user_input:
-        openai.api_key = openai_key
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": user_input}]
-        )
-        st.write("Chatbot:", response["choices"][0]["message"]["content"])
-
-# ------------------- Real-time Weather Data -------------------
-elif page == "Weather":
-    st.subheader("🌦️ Real-Time Weather Data")
-    city = st.text_input("Enter a city:")
-
-    if city and api_key:
-        api_url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
-        response = requests.get(api_url).json()
-
-        if response.get("main"):
-            st.write(f"🌡️ Temperature: {response['main']['temp']}°C")
-            st.write(f"💨 Wind Speed: {response['wind']['speed']} m/s")
-        else:
-            st.error("City not found!")
-    elif not api_key:
-        st.error("⚠️ API Key is missing. Please check your .env file.")
-
-# ------------------- Dark Mode & Custom Styling -------------------
-st.markdown("""
-    <style>
-        .main {
-            background-color: #222;
-            color: white;
-        }
-        .stTextInput>div>div>input {
-            background-color: #333 !important;
-            color: white !important;
-        }
-        .stAlert {
-            background-color: #444 !important;
-        }
-    </style>
-""", unsafe_allow_html=True)
+    user_input = st.t
