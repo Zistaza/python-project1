@@ -35,7 +35,7 @@ if page == "Home":
     except FileNotFoundError:
         st.warning("⚠️ Image not found! Please ensure 'webappbanner.jpg' is in the same directory.")
 
-   st.markdown("### Why Use This Web App?")
+    st.markdown("### Why Use This Web App?")
     st.write("🛠️ **Features:** A collection of AI-powered utilities designed for efficiency and engagement.")
     st.write("🚀 **Live Demo:** Experience real-time interactions with AI-driven tools.")
     st.write("📊 **Data Sweeper:** Effortlessly clean and preprocess data for better insights.")
