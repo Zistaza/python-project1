@@ -19,15 +19,14 @@ if page == "Home":
     st.title("🚀 Streamlit Project: The Best Way to Build Python Apps?")
     st.write("This web app demonstrates how to build interactive Python apps using Streamlit.")
     
-    # Ensure the image exists inside assets folder
+    # Display Image (Ensure 'banner.png' is in the same directory as app.py)
     try:
-        st.image("/banner.png", use_container_width=True)
-    except:
-        st.warning("⚠️ Image not found!")
+        st.image("banner.png", use_container_width=True)  # Corrected path
+    except FileNotFoundError:
+        st.warning("⚠️ Image not found! Please ensure 'banner.png' is in the same directory.")
 
     st.markdown("### Why Streamlit?")
     st.write("✅ Quick Development, 🛠️ Easy Deployment, 📊 Great for Data Apps")
-
 # ------------------- Features Page -------------------
 elif page == "Features":
     st.subheader("📌 Key Features of This Web App")
