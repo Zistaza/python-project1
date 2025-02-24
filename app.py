@@ -131,9 +131,23 @@ elif page == "Data Sweeper":  # <-- Add this condition
             df = df[columns]
 
             # Data Visualization
-            st.subheader("Data Visualization")
-            if st.checkbox(f"Show visualization for {file.name}"):
-                st.bar_chart(df.select_dtypes(include='number').iloc[:, :2])
+           st.subheader("📊 Data Visualization")
+
+if 'df' in locals() and not df.empty:  # Ensure df exists and is not empty
+    numeric_cols = df.select_dtypes(include='number')
+
+    if numeric_cols.empty:
+        st.warning("⚠️ No numeric columns found for visualization.")
+    else:
+        # Ensure 'file' is defined before using file.name
+        file_name = file.name if 'file' in locals() else "uploaded data"
+        
+        if st.checkbox(f"Show visualization for {file_name}"):
+            st.bar_chart(numeric_cols)
+else:
+    st.warning("🚨 Dataframe is empty or not loaded. Please upload a valid file.")
+
+
 
             # Conversion Options
             st.subheader("Conversion Options")
