@@ -25,8 +25,9 @@ page = st.sidebar.radio("Go to",
 
 # ------------------- Home Page -------------------
 if page == "Home":
-    st.title("🚀 Streamlit Project: The Best Way to Build Python Apps?")
-    st.write("This web app demonstrates how to build interactive Python apps using Streamlit.")
+    st.title("🌟 Growth Mindset Web App: Innovate, Create & Analyze with Ease")
+    st.write("Explore a suite of intelligent tools designed to boost efficiency, spark creativity, and simplify data processing.")
+
     
     # Display Image (Ensure 'webappbanner.jpg' is in the same directory as app.py)
     try:
@@ -34,15 +35,27 @@ if page == "Home":
     except FileNotFoundError:
         st.warning("⚠️ Image not found! Please ensure 'webappbanner.jpg' is in the same directory.")
 
-    st.markdown("### Why Streamlit?")
-    st.write("✅ Quick Development, 🛠️ Easy Deployment, 📊 Great for Data Apps")
+   st.markdown("### Why Use This Web App?")
+    st.write("🛠️ **Features:** A collection of AI-powered utilities designed for efficiency and engagement.")
+    st.write("🚀 **Live Demo:** Experience real-time interactions with AI-driven tools.")
+    st.write("📊 **Data Sweeper:** Effortlessly clean and preprocess data for better insights.")
+    st.write("🎉 **Fun Facts:** Discover random, interesting facts that spark curiosity.")
+    st.write("🎨 **Draw Something:** Express your creativity with an AI-assisted drawing tool.")
+    st.write("😃 **Text-to-Emoji:** Instantly transform text into meaningful emoji expressions.")
+
+    st.markdown("### Built with:")
+    st.write("⚡ **Streamlit** for fast and interactive UI development")
+    st.write("🤖 **AI & Data Processing** for automation and intelligent insights")
+    st.write("📊 **Visualization Tools** for enhanced data representation")
 # ------------------- Features Page -------------------
 elif page == "Features":
-    st.subheader("📌 Key Features of This Web App")
-    st.write("- Interactive UI Elements")
-    st.write("- Real-time Data Fetching")
-    st.write("- AI-Powered Features")
-    st.write("- Beautiful Data Visualizations")
+    st.subheader("🚀 Explore the Key Features!")
+    st.write("- **Seamless User Experience** with an intuitive interface")
+    st.write("- **Live Data Updates** for real-time insights")
+    st.write("- **AI-Powered Enhancements** for smarter interactions")
+    st.write("- **Stunning Visualizations** to make data easy to understand")
+    st.write("- **Interactive Tools** for a hands-on experience")
+    st.write("- **Multi-Platform Support** for accessibility anywhere")
 
 # ------------------- Live Demo Page -------------------
 elif page == "Live Demo":
