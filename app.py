@@ -15,7 +15,7 @@ st.set_page_config(page_title="Best Way to Build Python Apps", layout="wide")
 
 # Sidebar Navigation
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Home", "Features", "Live Demo", "Fun Facts", "Draw Something", "Text-to-Emoji"])
+page = st.sidebar.radio("Go to", ["Home", "Features", "Live Demo", "Data Sweeper", "Fun Facts", "Draw Something", "Text-to-Emoji"])
 
 # ------------------- Home Page -------------------
 if page == "Home":
