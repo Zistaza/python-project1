@@ -67,11 +67,11 @@ user_input = st.text_input("Ask something:")
 # Generate Response
 if user_input and openai_key:
     try:
-        openai.api_key = openai_key
-        response = openai.ChatCompletion.create(
+        client = openai.OpenAI(api_key=openai_key)  # ✅ Correct way in OpenAI v1.0+
+        response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": user_input}]
         )
-        st.write("🤖 AI:", response["choices"][0]["message"]["content"])
+        st.write("🤖 AI:", response.choices[0].message.content)
     except Exception as e:
         st.error(f"Error: {e}")
