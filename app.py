@@ -126,12 +126,12 @@ elif page == "Data Sweeper":  # <-- Add this condition
                         st.write("Missing values have been filled!")
 
             # Select Columns to Keep
-            st.subheader("Select Columns to Keep")
-            columns = st.multiselect(f"Choose columns for {file.name}", df.columns, default=df.columns)
-            df = df[columns]
+st.subheader("Select Columns to Keep")
+columns = st.multiselect(f"Choose columns for {file.name}", df.columns, default=df.columns)
+df = df[columns]
 
-            # Data Visualization
-           st.subheader("📊 Data Visualization")
+# Data Visualization
+st.subheader("📊 Data Visualization")  # Fixed indentation
 
 if 'df' in locals() and not df.empty:  # Ensure df exists and is not empty
     numeric_cols = df.select_dtypes(include='number')
@@ -147,32 +147,30 @@ if 'df' in locals() and not df.empty:  # Ensure df exists and is not empty
 else:
     st.warning("🚨 Dataframe is empty or not loaded. Please upload a valid file.")
 
+# Conversion Options
+st.subheader("Conversion Options")
+conversion_type = st.radio(f"Convert {file.name} to:", ["CSV", "Excel"], key=file.name)
 
+if st.button(f"Convert {file.name}"):
+    buffer = BytesIO()
+    if conversion_type == "CSV":
+        df.to_csv(buffer, index=False)
+        file_name = file.name.replace(file_ext, ".csv")
+        mime_type = "text/csv"
+    elif conversion_type == "Excel":
+        df.to_excel(buffer, index=False)
+        file_name = file.name.replace(file_ext, ".xlsx")
+        mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
-            # Conversion Options
-            st.subheader("Conversion Options")
-            conversion_type = st.radio(f"Convert {file.name} to:", ["CSV", "Excel"], key=file.name)
+    buffer.seek(0)
+    st.download_button(
+        label=f"Download {file.name} as {conversion_type}",
+        data=buffer,
+        file_name=file_name,
+        mime=mime_type
+    )
 
-            if st.button(f"Convert {file.name}"):
-                buffer = BytesIO()
-                if conversion_type == "CSV":
-                    df.to_csv(buffer, index=False)
-                    file_name = file.name.replace(file_ext, ".csv")
-                    mime_type = "text/csv"
-                elif conversion_type == "Excel":
-                    df.to_excel(buffer, index=False)
-                    file_name = file.name.replace(file_ext, ".xlsx")
-                    mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-
-                buffer.seek(0)
-                st.download_button(
-                    label=f"Download {file.name} as {conversion_type}",
-                    data=buffer,
-                    file_name=file_name,
-                    mime=mime_type
-                )
-
-        st.success("All files processed successfully!")
+st.success("All files processed successfully!")
 
 
 # ------------------- Fun Facts -------------------
