@@ -116,8 +116,9 @@ facts = [
 
  # Button to Generate Fun Fact
     if st.button("Get a Fun Fact!", key="fun_fact_button"):
-        fun_fact = random.choice(facts)
+        fun_fact = random.choice(facts)  # Ensure 'facts' is defined before this line
         st.markdown(f"<div class='fact-box'>📢 {fun_fact}</div>", unsafe_allow_html=True)
+        
         # ------------------- Draw Something -------------------
 if page == "Draw Something":
     st.subheader("🎨 Draw Something!")
