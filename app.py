@@ -16,49 +16,8 @@ st.set_page_config(page_title="Best Way to Build Python Apps", layout="wide")
 import streamlit as st
 
 # Sidebar Navigation
-selected_page = st.sidebar.radio(
-    "🔍 Explore Sections:", 
-    [
-        "🏠 Home Dashboard", 
-        "📊 Data Overview", 
-        "📉 Trends & Insights", 
-        "📌 Key Findings", 
-        "📂 Manage Data", 
-        "⚙️ Advanced Tools", 
-        "📤 Export & Reports"
-    ],
-    index=0,
-    key="navigation"
-)
-
-# Display content based on selection
-if selected_page == "🏠 Home Dashboard":
-    st.title("Welcome to Your Data App! 🚀")
-    st.write("Navigate using the sidebar to explore features.")
-
-elif selected_page == "📊 Data Overview":
-    st.title("Data Overview")
-    st.write("View and explore the raw data.")
-
-elif selected_page == "📉 Trends & Insights":
-    st.title("Trends & Insights")
-    st.write("Discover key patterns and trends in the data.")
-
-elif selected_page == "📌 Key Findings":
-    st.title("Key Findings & Recommendations")
-    st.write("Summary of important insights from analysis.")
-
-elif selected_page == "📂 Manage Data":
-    st.title("Manage & Upload Data")
-    st.write("Upload new datasets and manage existing ones.")
-
-elif selected_page == "⚙️ Advanced Tools":
-    st.title("Advanced Analytics & Tools")
-    st.write("Utilize AI-driven features and processing tools.")
-
-elif selected_page == "📤 Export & Reports":
-    st.title("Export Data & Reports")
-    st.write("Download results and generate reports.")
+st.sidebar.title("Navigation")
+page = st.sidebar.radio("Go to", ["Home", "Features", "Live Demo","Data Sweeper", "Fun Facts", "Draw Something", "Text-to-Emoji"]
 
 
 # ------------------- Home Page -------------------
