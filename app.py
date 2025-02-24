@@ -19,11 +19,11 @@ if page == "Home":
     st.title("🚀 Streamlit Project: The Best Way to Build Python Apps?")
     st.write("This web app demonstrates how to build interactive Python apps using Streamlit.")
     
-    # Display Image (Ensure 'banner.png' is in the same directory as app.py)
+    # Display Image (Ensure 'webappbanner.jpg' is in the same directory as app.py)
     try:
-        st.image("banner.png", use_container_width=True)  # Corrected path
+        st.image("webappbanner.jpg", use_container_width=True)  # Corrected path
     except FileNotFoundError:
-        st.warning("⚠️ Image not found! Please ensure 'banner.png' is in the same directory.")
+        st.warning("⚠️ Image not found! Please ensure 'webappbanner.jpg' is in the same directory.")
 
     st.markdown("### Why Streamlit?")
     st.write("✅ Quick Development, 🛠️ Easy Deployment, 📊 Great for Data Apps")
