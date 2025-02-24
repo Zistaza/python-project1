@@ -6,6 +6,7 @@ import openai
 import requests
 import os
 from dotenv import load_dotenv
+import openai
 
 # Load environment variables
 load_dotenv()
@@ -55,8 +56,22 @@ elif page == "Live Demo":
     st.plotly_chart(fig)
 
 # ------------------- AI Chatbot -------------------
-elif page == "AI Chatbot":
-    st.subheader("🤖 AI Chatbot")
-    openai_key = st.text_input("Enter OpenAI API Key", type="password")
-    user_input = st.text_input("Ask something:")
+st.subheader("🤖 AI Chatbot")
 
+# Get API Key
+openai_key = st.text_input("Enter OpenAI API Key", type="password")
+
+# Get User Input
+user_input = st.text_input("Ask something:")
+
+# Generate Response
+if user_input and openai_key:
+    try:
+        openai.api_key = openai_key
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": user_input}]
+        )
+        st.write("🤖 AI:", response["choices"][0]["message"]["content"])
+    except Exception as e:
+        st.error(f"Error: {e}")
