@@ -4,6 +4,8 @@ import numpy as np
 import plotly.express as px
 import random
 from streamlit_drawable_canvas import st_canvas
+from PIL import Image
+import io
 
 # Set up Streamlit page
 st.set_page_config(page_title="Best Way to Build Python Apps", layout="wide")
@@ -64,9 +66,12 @@ elif page == "Fun Facts":
         st.write("📢", random.choice(facts))
 
 # ------------------- Draw Something -------------------
+
+        # ------------------- Draw Something -------------------
 if page == "Draw Something":
     st.subheader("🎨 Draw Something!")
 
+    # Create a canvas component
     canvas_result = st_canvas(
         fill_color="rgba(255, 165, 0, 0.3)", 
         stroke_width=5,
@@ -77,23 +82,29 @@ if page == "Draw Something":
         key="canvas"
     )
 
-    # Check if user has drawn something
+    # Only proceed if the user has drawn something
     if canvas_result.image_data is not None:
-        st.write("✅ Your Drawing Preview:")
-        image = Image.fromarray((canvas_result.image_data[:, :, :3]).astype('uint8'))
+        img_array = canvas_result.image_data
 
-        # Convert to bytes for download
-        img_bytes = io.BytesIO()
-        image.save(img_bytes, format="PNG")
-        img_bytes.seek(0)
+        # Ensure the image is not blank before processing
+        if np.any(img_array):  
+            st.write("✅ Your Drawing Preview:")
+            image = Image.fromarray((img_array[:, :, :3]).astype('uint8'))
 
-        # Download button
-        st.download_button(
-            label="📥 Download Drawing",
-            data=img_bytes,
-            file_name="drawing.png",
-            mime="image/png"
-        )
+            # Convert to bytes for download
+            img_bytes = io.BytesIO()
+            image.save(img_bytes, format="PNG")
+            img_bytes.seek(0)
+
+            # Download button
+            st.download_button(
+                label="📥 Download Drawing",
+                data=img_bytes,
+                file_name="drawing.png",
+                mime="image/png"
+            )
+        else:
+            st.warning("⚠️ Draw something first before downloading!")
 
 # ------------------- Text-to-Emoji Converter -------------------
 elif page == "Text-to-Emoji":
