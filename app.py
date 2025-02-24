@@ -58,4 +58,5 @@ elif page == "Live Demo":
 elif page == "AI Chatbot":
     st.subheader("🤖 AI Chatbot")
     openai_key = st.text_input("Enter OpenAI API Key", type="password")
-    user_input = st.t
+    user_input = st.text_input("Ask something:")
+
