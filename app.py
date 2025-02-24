@@ -51,6 +51,8 @@ elif page == "Live Demo":
     st.plotly_chart(fig)
 
 # ------------------- Fun Facts -------------------
+elif page == "Fun Facts":
+
 # Title with Icon
 st.markdown("<h2 style='text-align: center;'>🎲 Fun Fact Generator</h2>", unsafe_allow_html=True)
 
@@ -113,11 +115,10 @@ facts = [
     "Your heart beats about 100,000 times per day!",
 ]
 
-# Button to Generate Fun Fact
-if st.button("Get a Fun Fact!", key="fun_fact_button"):
-    fun_fact = random.choice(facts)
-    st.markdown(f"<div class='fact-box'>📢 {fun_fact}</div>", unsafe_allow_html=True)
-
+ # Button to Generate Fun Fact
+    if st.button("Get a Fun Fact!", key="fun_fact_button"):
+        fun_fact = random.choice(facts)
+        st.markdown(f"<div class='fact-box'>📢 {fun_fact}</div>", unsafe_allow_html=True)
         # ------------------- Draw Something -------------------
 if page == "Draw Something":
     st.subheader("🎨 Draw Something!")
