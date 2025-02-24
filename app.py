@@ -64,10 +64,10 @@ elif page == "Fun Facts":
         st.write("📢", random.choice(facts))
 
 # ------------------- Draw Something -------------------
-elif page == "Draw Something":
+if page == "Draw Something":
     st.subheader("🎨 Draw Something!")
 
-    canvas = st_canvas(
+    canvas_result = st_canvas(
         fill_color="rgba(255, 165, 0, 0.3)", 
         stroke_width=5,
         stroke_color="black",
@@ -77,7 +77,23 @@ elif page == "Draw Something":
         key="canvas"
     )
 
-    st.write("🖌 Draw on the canvas above!")
+    # Check if user has drawn something
+    if canvas_result.image_data is not None:
+        st.write("✅ Your Drawing Preview:")
+        image = Image.fromarray((canvas_result.image_data[:, :, :3]).astype('uint8'))
+
+        # Convert to bytes for download
+        img_bytes = io.BytesIO()
+        image.save(img_bytes, format="PNG")
+        img_bytes.seek(0)
+
+        # Download button
+        st.download_button(
+            label="📥 Download Drawing",
+            data=img_bytes,
+            file_name="drawing.png",
+            mime="image/png"
+        )
 
 # ------------------- Text-to-Emoji Converter -------------------
 elif page == "Text-to-Emoji":
