@@ -1,4 +1,6 @@
 streamlit
 pandas
-emoji
-matplotlib
+numpy
+plotly
+streamlit-drawable-canvas
+pillow
