@@ -15,43 +15,9 @@ st.set_page_config(page_title="Best Way to Build Python Apps", layout="wide")
 
 import streamlit as st
 
-# Sidebar Styling
-st.sidebar.markdown(
-    """
-    <style>
-        /* Sidebar Styling */
-        .sidebar .sidebar-content {
-            background-color: #ffcc00; /* Bright Yellow */
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .sidebar .sidebar-content h1 {
-            color: #ffffff; 
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .sidebar .stRadio label {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        .sidebar .stRadio label:hover {
-            background-color: #ff6600; /* Orange on Hover */
-            color: #ffffff;
-            transition: 0.3s;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 # Sidebar Navigation
-st.sidebar.title("🚀 Navigation")
+st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Home", "Features", "Live Demo", "Data Sweeper", "Fun Facts", "Draw Something", "Text-to-Emoji"])
-
 
 # ------------------- Home Page -------------------
 if page == "Home":
