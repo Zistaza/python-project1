@@ -71,7 +71,7 @@ elif page == "Fun Facts":
 if page == "Draw Something":
     st.subheader("🎨 Draw Something!")
 
-    # Create a canvas component
+    # Create a drawing canvas
     canvas_result = st_canvas(
         fill_color="rgba(255, 165, 0, 0.3)", 
         stroke_width=5,
@@ -82,14 +82,14 @@ if page == "Draw Something":
         key="canvas"
     )
 
-    # Only proceed if the user has drawn something
+    # Check if drawing exists
     if canvas_result.image_data is not None:
-        img_array = canvas_result.image_data
+        img_array = canvas_result.image_data[:, :, :3]  # Remove alpha channel
 
-        # Ensure the image is not blank before processing
-        if np.any(img_array):  
+        # Check if the image is blank (all pixels white)
+        if not np.all(img_array == 255):  
             st.write("✅ Your Drawing Preview:")
-            image = Image.fromarray((img_array[:, :, :3]).astype('uint8'))
+            image = Image.fromarray(img_array.astype('uint8'))
 
             # Convert to bytes for download
             img_bytes = io.BytesIO()
@@ -105,7 +105,6 @@ if page == "Draw Something":
             )
         else:
             st.warning("⚠️ Draw something first before downloading!")
-
 # ------------------- Text-to-Emoji Converter -------------------
 elif page == "Text-to-Emoji":
     st.subheader("😃 Text-to-Emoji Converter")
