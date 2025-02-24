@@ -7,6 +7,9 @@ from streamlit_drawable_canvas import st_canvas
 from PIL import Image
 import io
 
+# Set up Streamlit page
+st.set_page_config(page_title="Best Way to Build Python Apps", layout="wide")
+
 # Custom CSS for styling
 st.markdown("""
     <style>
@@ -39,9 +42,6 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
-
-# Set up Streamlit page
-st.set_page_config(page_title="Best Way to Build Python Apps", layout="wide")
 
 # Sidebar Navigation
 st.sidebar.title("Navigation")
