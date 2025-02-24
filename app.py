@@ -2,22 +2,15 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
-import openai
-import requests
-import os
-from dotenv import load_dotenv
-import openai
-
-# Load environment variables
-load_dotenv()
-api_key = os.getenv("OPENWEATHER_API_KEY")  # Get API key from .env file
+import random
+from streamlit_drawable_canvas import st_canvas
 
 # Set up Streamlit page
 st.set_page_config(page_title="Best Way to Build Python Apps", layout="wide")
 
 # Sidebar Navigation
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Home", "Features", "Live Demo", "AI Chatbot", "Weather"])
+page = st.sidebar.radio("Go to", ["Home", "Features", "Live Demo", "Fun Facts", "Draw Something", "Text-to-Emoji"])
 
 # ------------------- Home Page -------------------
 if page == "Home":
@@ -26,9 +19,9 @@ if page == "Home":
     
     # Ensure the image exists inside assets folder
     try:
-        st.image("/banner.png", use_container_width=True)  # Updated use_container_width
+        st.image("/banner.png", use_container_width=True)
     except:
-        st.warning("⚠️ Image not found in!")
+        st.warning("⚠️ Image not found!")
 
     st.markdown("### Why Streamlit?")
     st.write("✅ Quick Development, 🛠️ Easy Deployment, 📊 Great for Data Apps")
@@ -55,23 +48,53 @@ elif page == "Live Demo":
     fig = px.scatter(df, x="x", y="y", title="Random Data Distribution")
     st.plotly_chart(fig)
 
-# ------------------- AI Chatbot -------------------
-st.subheader("🤖 AI Chatbot")
+# ------------------- Fun Facts -------------------
+elif page == "Fun Facts":
+    st.subheader("🎲 Fun Fact Generator")
 
-# Get API Key
-openai_key = st.text_input("Enter OpenAI API Key", type="password")
+    facts = [
+        "Honey never spoils. Archaeologists have found 3000-year-old honey that's still good!",
+        "A day on Venus is longer than a year on Venus!",
+        "Octopuses have three hearts!",
+        "Bananas are berries, but strawberries aren’t!",
+        "You can’t hum while holding your nose!"
+    ]
 
-# Get User Input
-user_input = st.text_input("Ask something:")
+    if st.button("Get a Fun Fact!"):
+        st.write("📢", random.choice(facts))
 
-# Generate Response
-if user_input and openai_key:
-    try:
-        client = openai.OpenAI(api_key=openai_key)  # ✅ Correct way in OpenAI v1.0+
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": user_input}]
-        )
-        st.write("🤖 AI:", response.choices[0].message.content)
-    except Exception as e:
-        st.error(f"Error: {e}")
+# ------------------- Draw Something -------------------
+elif page == "Draw Something":
+    st.subheader("🎨 Draw Something!")
+
+    canvas = st_canvas(
+        fill_color="rgba(255, 165, 0, 0.3)", 
+        stroke_width=5,
+        stroke_color="black",
+        background_color="white",
+        height=300,
+        width=400,
+        key="canvas"
+    )
+
+    st.write("🖌 Draw on the canvas above!")
+
+# ------------------- Text-to-Emoji Converter -------------------
+elif page == "Text-to-Emoji":
+    st.subheader("😃 Text-to-Emoji Converter")
+
+    emoji_dict = {
+        "happy": "😃",
+        "sad": "😢",
+        "love": "❤️",
+        "fire": "🔥",
+        "cool": "😎",
+        "angry": "😡"
+    }
+
+    user_input = st.text_input("Type something (e.g., 'I am happy today!'):")
+
+    if user_input:
+        words = user_input.lower().split()
+        converted_text = " ".join([emoji_dict.get(word, word) for word in words])
+        st.write("🔄 Converted Text: ", converted_text)
