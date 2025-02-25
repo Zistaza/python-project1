@@ -174,7 +174,7 @@ st.success("All files processed successfully!")
 
 
 # ------------------- Fun Facts -------------------
-elif page == "Fun Facts":  # Make sure it's properly placed in an elif block
+  elif page == "Fun Facts":  # Make sure it's properly placed in an elif block
     # Title with Icon
     st.markdown("<h2 style='text-align: center;'>🎲 Fun Fact Generator</h2>", unsafe_allow_html=True)
 
