@@ -143,16 +143,69 @@ elif page == "Data Sweeper":
 # ------------------- Fun Facts -------------------
 elif page == "Fun Facts":
     st.subheader("🎲 Fun Fact Generator")
+    # Fun Fact List
     facts = [
-        "Honey never spoils!",
-        "Bananas are berries, but strawberries aren’t!",
-        "A shrimp's heart is in its head!",
+        # Science Facts
+        "Honey never spoils. Archaeologists have found 3000-year-old honey that's still good!",
+        "A day on Venus is longer than a year on Venus!",
         "Octopuses have three hearts!",
-        "Penguins propose with pebbles!",
-        "You share about 60% of your DNA with bananas!"
+        "Water can boil and freeze at the same time in special conditions called the 'triple point'!",
+        "Bananas are berries, but strawberries aren’t!",
+        "Sharks have been around longer than trees!",
+        "Your body has more bacterial cells than human cells!",
+        "The Eiffel Tower grows taller in summer due to metal expansion!",
+        "Some jellyfish are biologically immortal!",
+        "There are more stars in space than grains of sand on Earth!",
+
+        # Animal Facts
+        "A group of flamingos is called a 'flamboyance'!",
+        "Sloths can hold their breath longer than dolphins!",
+        "Tigers have striped skin, not just striped fur!",
+        "A shrimp's heart is in its head!",
+        "Cows have best friends and get stressed when separated!",
+        "Ostriches can run faster than horses!",
+        "Penguins propose to their mates with a pebble!",
+        "Butterflies can taste with their feet!",
+        "Some cats are allergic to humans!",
+
+        # Space Facts
+        "Neutron stars are so dense that a sugar-cube-sized piece would weigh billions of tons!",
+        "One day on Mercury lasts about 176 Earth days!",
+        "There’s a giant cloud of alcohol in space!",
+        "The moon is slowly moving away from Earth at a rate of about 3.8 cm per year!",
+        "If two pieces of the same metal touch in space, they will fuse together permanently!",
+
+        # History Facts
+        "Cleopatra lived closer in time to the invention of the iPhone than to the construction of the Great Pyramid!",
+        "The shortest war in history lasted just 38 minutes!",
+        "Napoleon was once attacked by a horde of bunnies!",
+        "Ancient Romans used mouse brains as toothpaste!",
+
+        # Human Body Facts
+        "Your bones are about five times stronger than steel!",
+        "The human brain generates enough electricity to power a small light bulb!",
+        "You share about 60% of your DNA with bananas!",
+        "The human body contains around 37.2 trillion cells!",
+        "Your stomach gets a new lining every few days to prevent digesting itself!",
+
+        # Random Fun Facts
+        "You can’t hum while holding your nose!",
+        "Wombat poop is cube-shaped!",
+        "There’s an island in Japan ruled entirely by bunnies!",
+        "Scotland has 421 words for snow!",
+        "There's a species of fish that can climb waterfalls!",
+        "A single spaghetti noodle is called a 'spaghetto'!",
+        "Some turtles can breathe through their butts!",
+        "The world’s longest hiccup spree lasted 68 years!",
+        "Pineapples take about 2 years to grow!",
+        "A group of crows is called a 'murder'!",
+        "Your heart beats about 100,000 times per day!",
     ]
-    if st.button("Get a Fun Fact!"):
-        st.success(random.choice(facts))
+
+    # Button to Generate Fun Fact (Properly Indented)
+    if st.button("Get a Fun Fact!", key="fun_fact_button"):
+        fun_fact = random.choice(facts)  # Ensure 'facts' is defined before this line
+        st.markdown(f"<div class='fact-box'>📢 {fun_fact}</div>", unsafe_allow_html=True)
 
 # ------------------- Draw Something -------------------
 elif page == "Draw Something":
