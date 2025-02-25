@@ -248,80 +248,8 @@ elif page == "Draw Something":
 # ------------------- Text-to-Emoji -------------------
 elif page == "Text-to-Emoji":
     st.subheader("😃 Text-to-Emoji Converter")
-        emoji_dict = {
-        # 😀 Emotions
-        "happy": "😃", "smile": "😊", "grin": "😁", "joy": "😂",
-        "sad": "😢", "cry": "😭", "tear": "😿", "heartbroken": "💔",
-        "love": "❤️", "heart": "💖", "kiss": "😘", "hug": "🤗",
-        "angry": "😡", "mad": "🤬", "furious": "😠", "annoyed": "😤",
-        "surprised": "😲", "shocked": "😱", "wow": "🤯",
-        "laugh": "🤣", "funny": "😆", "joke": "😂",
-        "bored": "😐", "confused": "😕", "thinking": "🤔",
-        "sleep": "😴", "tired": "🥱", "yawn": "🥱",
-        "cool": "😎", "nerd": "🤓", "robot": "🤖",
-
-        # 🎉 Celebration
-        "party": "🥳", "celebrate": "🎉", "clap": "👏", "cheers": "🍻",
-        "win": "🏆", "medal": "🥇", "star": "⭐", "confetti": "🎊",
-        "gift": "🎁", "trophy": "🏆", "prize": "🏅", "gold": "🥇",
-
-        # 🔥 Actions & Gestures
-        "thumbs up": "👍", "thumbs down": "👎", "ok": "👌",
-        "peace": "✌️", "wave": "👋", "pray": "🙏",
-        "muscle": "💪", "run": "🏃", "walk": "🚶",
-        "dance": "💃", "yoga": "🧘", "clap": "👏",
-
-        # 🌍 Nature
-        "sun": "☀️", "moon": "🌙", "star": "⭐", "rain": "🌧️",
-        "snow": "❄️", "cloud": "☁️", "fire": "🔥", "lightning": "⚡",
-        "tree": "🌳", "flower": "🌸", "leaf": "🍃", "ocean": "🌊",
-        "earth": "🌍", "mountain": "⛰️", "volcano": "🌋", "rainbow": "🌈",
-
-        # 🍔 Food & Drinks
-        "food": "🍕", "pizza": "🍕", "burger": "🍔", "fries": "🍟",
-        "hotdog": "🌭", "taco": "🌮", "sushi": "🍣", "noodles": "🍜",
-        "cake": "🎂", "chocolate": "🍫", "ice cream": "🍦", "cookie": "🍪",
-        "coffee": "☕", "tea": "🍵", "wine": "🍷", "beer": "🍺",
-        "water": "💧", "milk": "🥛", "juice": "🧃",
-
-        # 🚗 Transportation
-        "car": "🚗", "bike": "🚲", "bus": "🚌", "train": "🚆",
-        "plane": "✈️", "rocket": "🚀", "boat": "⛵", "helicopter": "🚁",
-
-        # 💻 Tech & Devices
-        "computer": "💻", "laptop": "💻", "phone": "📱", "tablet": "📲",
-        "watch": "⌚", "tv": "📺", "camera": "📷", "keyboard": "⌨️",
-        "headphones": "🎧", "game": "🎮", "video": "📹", "music": "🎵",
-
-        # 🎶 Music & Entertainment
-        "song": "🎶", "guitar": "🎸", "piano": "🎹", "microphone": "🎤",
-        "drum": "🥁", "radio": "📻", "movie": "🎬", "popcorn": "🍿",
-
-        # ⚽ Sports
-        "football": "⚽", "basketball": "🏀", "baseball": "⚾",
-        "tennis": "🎾", "golf": "⛳", "running": "🏃",
-        "swimming": "🏊", "cycling": "🚴", "boxing": "🥊",
-
-        # 💰 Money & Finance
-        "money": "💰", "rich": "🤑", "cash": "💵",
-        "credit card": "💳", "bank": "🏦", "shopping": "🛍️",
-
-        # 🏡 Home & Objects
-        "house": "🏠", "building": "🏢", "bed": "🛏️",
-        "light": "💡", "book": "📖", "newspaper": "📰",
-        "pencil": "✏️", "paint": "🎨", "lock": "🔒",
-
-        # 🛑 Warning & Symbols
-        "stop": "🛑", "danger": "⚠️", "warning": "⚠️",
-        "check": "✅", "cross": "❌", "question": "❓",
-        "exclamation": "❗", "infinity": "♾️", "plus": "➕",
-        "minus": "➖", "equal": "➗"
-    }
-
-    user_input = st.text_input("Type something (e.g., 'I am happy today!'):")
-
-    if user_input:
-        words = user_input.lower().split()
-        converted_text = " ".join([emoji_dict.get(word, word) for word in words])
-        st.write("🔄 Converted Text: ", converted_text)
-
+    emoji_dict = {"happy": "😃", "sad": "😢", "love": "❤️", "angry": "😡", "fire": "🔥", "cool": "😎"}
+    text_input = st.text_input("Enter a word:")
+    if text_input:
+        emoji = emoji_dict.get(text_input.lower(), "❓")
+        st.write(f"Emoji: {emoji}")
