@@ -174,10 +174,9 @@ st.success("All files processed successfully!")
 
 
 # ------------------- Fun Facts -------------------
-  elif page == "Fun Facts":  # Make sure it's aligned with 'if' above
+elif page == "Fun Facts":  # Ensure it's properly aligned with previous conditions
     # Title with Icon
     st.markdown("<h2 style='text-align: center;'>🎲 Fun Fact Generator</h2>", unsafe_allow_html=True)
-
 
     # Fun Fact List
     facts = [
