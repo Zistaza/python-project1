@@ -174,9 +174,10 @@ st.success("All files processed successfully!")
 
 
 # ------------------- Fun Facts -------------------
-  elif page == "Fun Facts":  # Make sure it's properly placed in an elif block
+  elif page == "Fun Facts":  # Make sure it's aligned with 'if' above
     # Title with Icon
     st.markdown("<h2 style='text-align: center;'>🎲 Fun Fact Generator</h2>", unsafe_allow_html=True)
+
 
     # Fun Fact List
     facts = [
@@ -281,6 +282,7 @@ if page == "Draw Something":
             )
         else:
             st.warning("⚠️ Draw something first before downloading!")
+          
 # ------------------- Text-to-Emoji Converter -------------------
 elif page == "Text-to-Emoji":
     st.subheader("😃 Text-to-Emoji Converter")
